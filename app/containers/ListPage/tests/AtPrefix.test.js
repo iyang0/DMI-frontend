@@ -1,20 +1,20 @@
 import React from 'react';
 import { render } from 'react-testing-library';
 
-import ListItemTitle from '../ListItemTitle';
+import AtPrefix from '../AtPrefix';
 
-describe('<ListItemTitle />', () => {
-  it('should render an <p> tag', () => {
+describe('<AtPrefix />', () => {
+  it('should render an <span> tag', () => {
     const {
       container: { firstChild },
-    } = render(<ListItemTitle />);
-    expect(firstChild.tagName).toEqual('P');
+    } = render(<AtPrefix />);
+    expect(firstChild.tagName).toEqual('SPAN');
   });
 
   it('should have a class attribute', () => {
     const {
       container: { firstChild },
-    } = render(<ListItemTitle />);
+    } = render(<AtPrefix />);
     expect(firstChild.hasAttribute('class')).toBe(true);
   });
 
@@ -22,14 +22,14 @@ describe('<ListItemTitle />', () => {
     const id = 'test';
     const {
       container: { firstChild },
-    } = render(<ListItemTitle id={id} />);
+    } = render(<AtPrefix id={id} />);
     expect(firstChild.id).toEqual(id);
   });
 
   it('should not adopt an invalid attribute', () => {
     const {
       container: { firstChild },
-    } = render(<ListItemTitle attribute="test" />);
+    } = render(<AtPrefix attribute="test" />);
     expect(firstChild.hasAttribute('attribute')).toBe(false);
   });
 });
