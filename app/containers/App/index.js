@@ -8,20 +8,31 @@
  */
 
 import React from 'react';
+import { Helmet } from 'react-helmet';
+
 import { Switch, Route } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
+import AddPage from 'containers/AddPage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
+import Header from 'components/Header';
+import Footer from 'components/Footer';
 
 import GlobalStyle from '../../global-styles';
 
 export default function App() {
   return (
     <div>
+      <Helmet defaultTitle="DMI takehome">
+        <meta name="description" content="Takehome assignment for DMI" />
+      </Helmet>
+      <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
+        <Route path="/add" component={AddPage} />
         <Route component={NotFoundPage} />
       </Switch>
+      <Footer />
       <GlobalStyle />
     </div>
   );

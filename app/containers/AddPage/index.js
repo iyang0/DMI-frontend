@@ -1,0 +1,18 @@
+/*
+ * AddPage
+ *
+ * This is the first thing users see of our App, at the '/add' route
+ *
+ */
+
+import React from 'react';
+import { FormattedMessage } from 'react-intl';
+import messages from './messages';
+
+export default function AddPage() {
+  return (
+    <h1>
+      <FormattedMessage {...messages.header} />
+    </h1>
+  );
+}
