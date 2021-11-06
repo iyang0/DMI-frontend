@@ -1,7 +1,7 @@
 /*
- * FeaturePage
+ * ListDisplay
  *
- * List all the features
+ * List all the strings from backend
  */
 import React from 'react';
 import { Helmet } from 'react-helmet';
@@ -13,14 +13,14 @@ import List from './List';
 import ListItem from './ListItem';
 import ListItemTitle from './ListItemTitle';
 
-export default function FeaturePage() {
+export default function ListDisplay() {
   return (
     <div>
       <Helmet>
-        <title>Feature Page</title>
+        <title>String List</title>
         <meta
           name="description"
-          content="Feature page of React.js Boilerplate application"
+          content="Page containing UI to display all strings stored on server"
         />
       </Helmet>
       <H1>
@@ -29,46 +29,10 @@ export default function FeaturePage() {
       <List>
         <ListItem>
           <ListItemTitle>
-            <FormattedMessage {...messages.scaffoldingHeader} />
+            <FormattedMessage {...messages.testHeader} />
           </ListItemTitle>
           <p>
-            <FormattedMessage {...messages.scaffoldingMessage} />
-          </p>
-        </ListItem>
-
-        <ListItem>
-          <ListItemTitle>
-            <FormattedMessage {...messages.feedbackHeader} />
-          </ListItemTitle>
-          <p>
-            <FormattedMessage {...messages.feedbackMessage} />
-          </p>
-        </ListItem>
-
-        <ListItem>
-          <ListItemTitle>
-            <FormattedMessage {...messages.routingHeader} />
-          </ListItemTitle>
-          <p>
-            <FormattedMessage {...messages.routingMessage} />
-          </p>
-        </ListItem>
-
-        <ListItem>
-          <ListItemTitle>
-            <FormattedMessage {...messages.networkHeader} />
-          </ListItemTitle>
-          <p>
-            <FormattedMessage {...messages.networkMessage} />
-          </p>
-        </ListItem>
-
-        <ListItem>
-          <ListItemTitle>
-            <FormattedMessage {...messages.intlHeader} />
-          </ListItemTitle>
-          <p>
-            <FormattedMessage {...messages.intlMessage} />
+            <FormattedMessage {...messages.testMessage} />
           </p>
         </ListItem>
       </List>
