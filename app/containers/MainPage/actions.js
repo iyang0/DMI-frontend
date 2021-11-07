@@ -4,24 +4,10 @@
  *
  */
 
-import { LOAD_LIST, LOAD_LIST_SUCCESS, LOAD_LIST_ERROR } from './constants';
+import { DEFAULT_ACTION } from './constants';
 
-export function loadList() {
+export function defaultAction() {
   return {
-    type: LOAD_LIST,
-  };
-}
-
-export function loadListSuccess(list) {
-  return {
-    type: LOAD_LIST_SUCCESS,
-    list,
-  };
-}
-
-export function loadListError(error) {
-  return {
-    type: LOAD_LIST_ERROR,
-    error,
+    type: DEFAULT_ACTION,
   };
 }
