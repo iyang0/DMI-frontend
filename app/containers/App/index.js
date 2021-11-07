@@ -12,7 +12,7 @@ import { Helmet } from 'react-helmet';
 
 import { Switch, Route } from 'react-router-dom';
 
-import HomePage from 'containers/HomePage/Loadable';
+import MainPage from 'containers/MainPage/Loadable';
 import AddPage from 'containers/AddPage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
@@ -28,7 +28,7 @@ export default function App() {
       </Helmet>
       <Header />
       <Switch>
-        <Route exact path="/" component={HomePage} />
+        <Route exact path="/" component={MainPage} />
         <Route path="/add" component={AddPage} />
         <Route component={NotFoundPage} />
       </Switch>
