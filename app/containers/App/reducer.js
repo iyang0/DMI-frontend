@@ -20,21 +20,18 @@ const appReducer = (state = initialState, action) =>
   produce(state, draft => {
     switch (action.type) {
       case LOAD_LIST:
-        console.log('in reducer', action);
         draft.loading = true;
         draft.error = false;
         draft.list = false;
         break;
 
       case LOAD_LIST_SUCCESS:
-        console.log('in reducer', action);
         draft.list = action.list;
         draft.loading = false;
         draft.error = false;
         break;
 
       case LOAD_LIST_ERROR:
-        console.log('in reducer', action);
         draft.error = action.error;
         draft.loading = false;
         break;

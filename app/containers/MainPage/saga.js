@@ -6,11 +6,9 @@ import request from 'utils/request';
 // Individual exports for testing
 export function* getList() {
   const requestURL = `http://localhost:3001/strings`;
-  console.log('in saga');
   try {
     // Call request helper (see 'utils/request' - from example project)
     const list = yield call(request, requestURL);
-    console.log('Saga list', list);
     yield put(loadListSuccess(list));
   } catch (err) {
     yield put(loadListError(err));

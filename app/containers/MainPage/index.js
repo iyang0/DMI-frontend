@@ -20,25 +20,23 @@ import {
   makeSelectError,
 } from 'containers/App/selectors';
 import { loadList } from 'containers/App/actions';
-import makeSelectMainPage from './selectors';
-import reducer from './reducer';
+import reducer from 'containers/App/reducer';
+// import makeSelectMainPage from './selectors';
 import saga from './saga';
 import messages from './messages';
 import StringList from '../../components/StringList';
 
-const key = 'mainPage';
+// key is for what context for the selector to get from the store
+const key = 'global';
 
 export function MainPage({ loading, error, list, loadListDispatch }) {
   useInjectReducer({ key, reducer });
   useInjectSaga({ key, saga });
-  console.log(list);
-
-  const testArr = ['a', 'b', 'c'];
 
   const stringsListProps = {
     loading,
     error,
-    list: testArr,
+    list,
   };
 
   useEffect(() => {
@@ -61,14 +59,14 @@ export function MainPage({ loading, error, list, loadListDispatch }) {
 }
 
 MainPage.propTypes = {
+  loadListDispatch: PropTypes.func.isRequired,
   loading: PropTypes.bool,
   error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
   list: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
-  loadListDispatch: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
-  mainPage: makeSelectMainPage(),
+  // mainPage: makeSelectMainPage(),
   list: makeSelectList(),
   error: makeSelectError(),
   loading: makeSelectLoading(),

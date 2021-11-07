@@ -22,7 +22,6 @@ import { LOAD_LIST, LOAD_LIST_SUCCESS, LOAD_LIST_ERROR } from './constants';
  * @return {object} An action object with a type of LOAD_REPOS
  */
 export function loadList() {
-  console.log('in action');
   return {
     type: LOAD_LIST,
   };
