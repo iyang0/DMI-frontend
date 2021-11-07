@@ -24,15 +24,22 @@ import makeSelectMainPage from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
+import StringList from '../../components/StringList';
 
 const key = 'mainPage';
 
 export function MainPage({ loading, error, list, loadListDispatch }) {
   useInjectReducer({ key, reducer });
   useInjectSaga({ key, saga });
-  console.log(loading);
-  console.log(error);
   console.log(list);
+
+  const testArr = ['a', 'b', 'c'];
+
+  const stringsListProps = {
+    loading,
+    error,
+    list: testArr,
+  };
 
   useEffect(() => {
     // load strings on mount
@@ -48,6 +55,7 @@ export function MainPage({ loading, error, list, loadListDispatch }) {
       <h1>
         <FormattedMessage {...messages.header} />
       </h1>
+      <StringList {...stringsListProps} />
     </div>
   );
 }
