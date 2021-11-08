@@ -4,10 +4,16 @@
  *
  */
 
-import { DEFAULT_ACTION } from './constants';
+import { CHANGE_STR } from './constants';
 
-export function defaultAction() {
+/**
+ * Action for modifying the form state in the store
+ *
+ * @return {object} An action object with a type of LOAD_REPOS
+ */
+export function changeString(str) {
   return {
-    type: DEFAULT_ACTION,
+    type: CHANGE_STR,
+    str,
   };
 }

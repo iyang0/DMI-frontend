@@ -4,15 +4,18 @@
  *
  */
 import produce from 'immer';
-import { DEFAULT_ACTION } from './constants';
+import { CHANGE_STR } from './constants';
 
-export const initialState = {};
+export const initialState = {
+  str: '',
+};
 
 /* eslint-disable default-case, no-param-reassign */
 const addPageReducer = (state = initialState, action) =>
-  produce(state, (/* draft */) => {
+  produce(state, draft => {
     switch (action.type) {
-      case DEFAULT_ACTION:
+      case CHANGE_STR:
+        draft.str = action.str;
         break;
     }
   });

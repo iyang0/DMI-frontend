@@ -4,4 +4,4 @@
  *
  */
 
-export const DEFAULT_ACTION = 'app/AddPage/DEFAULT_ACTION';
+export const CHANGE_STR = 'app/AddPage/CHANGE_STR';

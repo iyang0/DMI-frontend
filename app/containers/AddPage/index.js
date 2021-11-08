@@ -11,20 +11,26 @@ import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
+// import { useHistory } from 'react-router';
 
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
-import makeSelectAddPage from './selectors';
+import { loadList } from 'containers/App/actions';
+import makeSelectAddPage, { makeSelectStr } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
 import Form from './Form';
 import Input from './Input';
 import Button from './Button';
+import { changeString } from './actions';
 
-export function AddPage() {
-  useInjectReducer({ key: 'addPage', reducer });
-  useInjectSaga({ key: 'addPage', saga });
+const key = 'addPage';
+
+export function AddPage({ str, onChangeString, onSubmitForm }) {
+  useInjectReducer({ key, reducer });
+  useInjectSaga({ key, saga });
+  // const history = useHistory();
 
   return (
     <div>
@@ -35,9 +41,15 @@ export function AddPage() {
           content="Form to add a string to list of strings"
         />
       </Helmet>
-      <Form>
+      <Form onSubmit={onSubmitForm}>
         <label htmlFor="str">
-          <Input id="str" type="text" placeholder="Type any string." />
+          <Input
+            id="str"
+            type="text"
+            placeholder="Type any string."
+            value={str}
+            onChange={onChangeString}
+          />
           <Button>
             <FormattedMessage {...messages.button} />
           </Button>
@@ -48,16 +60,23 @@ export function AddPage() {
 }
 
 AddPage.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  str: PropTypes.string,
+  onChangeString: PropTypes.func.isRequired,
+  onSubmitForm: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
   addPage: makeSelectAddPage(),
+  str: makeSelectStr(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    onChangeString: evt => dispatch(changeString(evt.target.value)),
+    onSubmitForm: evt => {
+      evt.preventDefault();
+      dispatch(loadList());
+    },
   };
 }
 

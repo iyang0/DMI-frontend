@@ -21,5 +21,11 @@ const makeSelectAddPage = () =>
     substate => substate,
   );
 
+const makeSelectStr = () =>
+  createSelector(
+    selectAddPageDomain,
+    substate => substate.str,
+  );
+
 export default makeSelectAddPage;
-export { selectAddPageDomain };
+export { selectAddPageDomain, makeSelectStr };
