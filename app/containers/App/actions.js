@@ -14,7 +14,14 @@
  *        return { type: YOUR_ACTION_CONSTANT, var: var }
  *    }
  */
-import { LOAD_LIST, LOAD_LIST_SUCCESS, LOAD_LIST_ERROR } from './constants';
+import {
+  LOAD_LIST,
+  LOAD_LIST_SUCCESS,
+  LOAD_LIST_ERROR,
+  ADD_ITEM,
+  ADD_ITEM_SUCCESS,
+  ADD_ITEM_ERROR,
+} from './constants';
 
 /**
  * Load the list of strings, this action starts the request saga
@@ -51,6 +58,48 @@ export function loadListSuccess(list) {
 export function loadListError(error) {
   return {
     type: LOAD_LIST_ERROR,
+    error,
+  };
+}
+
+/**
+ * Add a string to the backend via the request saga,
+ * this action starts the request saga
+ *
+ * @return {object} An action object with a type of LOAD_REPOS
+ */
+export function addItem(str) {
+  return {
+    type: ADD_ITEM,
+    str,
+  };
+}
+
+/**
+ * Dispatched when the item is successfully added to
+ * the list of items by the request saga
+ *
+ * @param  {array} repos The array of strings
+ *
+ * @return {object}      An action object with a type of LOAD_REPOS_SUCCESS passing the repos
+ */
+export function addItemSuccess(list) {
+  return {
+    type: ADD_ITEM_SUCCESS,
+    list,
+  };
+}
+
+/**
+ * Dispatched when adding the string fails
+ *
+ * @param  {object} error The error
+ *
+ * @return {object}       An action object with a type of LOAD_REPOS_ERROR passing the error
+ */
+export function addItemError(error) {
+  return {
+    type: ADD_ITEM_ERROR,
     error,
   };
 }

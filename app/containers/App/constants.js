@@ -13,3 +13,6 @@
 export const LOAD_LIST = 'DMI-frontend/App/LOAD_LIST';
 export const LOAD_LIST_SUCCESS = 'DMI-frontend/App/LOAD_LIST_SUCCESS';
 export const LOAD_LIST_ERROR = 'DMI-frontend/App/LOAD_LIST_ERROR';
+export const ADD_ITEM = 'app/AddPage/ADD_ITEM';
+export const ADD_ITEM_SUCCESS = 'app/AddPage/ADD_ITEM_SUCCESS';
+export const ADD_ITEM_ERROR = 'app/AddPage/ADD_ITEM_ERROR';
