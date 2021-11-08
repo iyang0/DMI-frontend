@@ -18,7 +18,7 @@ export function* addItemSaga() {
       },
       body: JSON.stringify({ string }),
     });
-    
+
     yield put(addItemSuccess(list));
   } catch (err) {
     yield put(addItemError(err));
