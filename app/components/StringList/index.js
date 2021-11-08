@@ -13,7 +13,6 @@ import Empty from 'components/Empty';
 // import styled from 'styled-components';
 
 function StringList({ loading, error, list }) {
-  console.log('in stringlist component', list);
   if (loading) {
     return <List component={LoadingIndicator} />;
   }
