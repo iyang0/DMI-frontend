@@ -7,7 +7,14 @@
  *
  */
 import produce from 'immer';
-import { LOAD_LIST, LOAD_LIST_SUCCESS, LOAD_LIST_ERROR } from './constants';
+import {
+  LOAD_LIST,
+  LOAD_LIST_SUCCESS,
+  LOAD_LIST_ERROR,
+  ADD_ITEM,
+  ADD_ITEM_SUCCESS,
+  ADD_ITEM_ERROR,
+} from './constants';
 
 export const initialState = {
   list: [],
@@ -32,6 +39,22 @@ const appReducer = (state = initialState, action) =>
         break;
 
       case LOAD_LIST_ERROR:
+        draft.error = action.error;
+        draft.loading = false;
+        break;
+
+      case ADD_ITEM:
+        draft.loading = true;
+        draft.error = false;
+        break;
+
+      case ADD_ITEM_SUCCESS:
+        draft.list = action.list;
+        draft.loading = false;
+        draft.error = false;
+        break;
+
+      case ADD_ITEM_ERROR:
         draft.error = action.error;
         draft.loading = false;
         break;
