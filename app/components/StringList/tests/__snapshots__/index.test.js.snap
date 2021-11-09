@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<StringList /> Should render and match the snapshot 1`] = `
+<div
+  class="Wrapper-sc-1umgotm-0 laCwDT"
+>
+  <ul
+    class="Ul-mwnq6h-0 jcxXFy"
+  >
+    <li
+      class="Wrapper-euo0oy-0 jLvxtc"
+    >
+      <div
+        class="Item-sc-3y9mie-0 fKXSkT"
+      >
+        Something went wrong, please try again!
+      </div>
+    </li>
+  </ul>
+</div>
+`;

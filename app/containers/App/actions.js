@@ -37,7 +37,7 @@ export function loadList() {
 /**
  * Dispatched when the list of strings are loaded by the request saga
  *
- * @param  {array} repos The array of strings
+ * @param  {array} list The array of strings
  *
  * @return {object}      An action object with a type of LOAD_REPOS_SUCCESS passing the repos
  */
@@ -79,7 +79,7 @@ export function addItem(str) {
  * Dispatched when the item is successfully added to
  * the list of items by the request saga
  *
- * @param  {array} repos The array of strings
+ * @param  {array} list The array of strings
  *
  * @return {object}      An action object with a type of LOAD_REPOS_SUCCESS passing the repos
  */
