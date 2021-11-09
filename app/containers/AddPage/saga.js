@@ -1,6 +1,6 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
 import { ADD_ITEM } from 'containers/App/constants';
-import { addItemSuccess, addItemError } from 'containers/App/actions';
+import { loadListSuccess, loadListError } from 'containers/App/actions';
 import request from 'utils/request';
 import { makeSelectStr } from './selectors';
 
@@ -19,9 +19,9 @@ export function* addItemSaga() {
       body: JSON.stringify({ string }),
     });
 
-    yield put(addItemSuccess(list));
+    yield put(loadListSuccess(list));
   } catch (err) {
-    yield put(addItemError(err));
+    yield put(loadListError(err));
   }
 }
 

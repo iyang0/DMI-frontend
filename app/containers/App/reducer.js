@@ -12,8 +12,6 @@ import {
   LOAD_LIST_SUCCESS,
   LOAD_LIST_ERROR,
   ADD_ITEM,
-  ADD_ITEM_SUCCESS,
-  ADD_ITEM_ERROR,
 } from './constants';
 
 export const initialState = {
@@ -46,17 +44,6 @@ const appReducer = (state = initialState, action) =>
       case ADD_ITEM:
         draft.loading = true;
         draft.error = false;
-        break;
-
-      case ADD_ITEM_SUCCESS:
-        draft.list = action.list;
-        draft.loading = false;
-        draft.error = false;
-        break;
-
-      case ADD_ITEM_ERROR:
-        draft.error = action.error;
-        draft.loading = false;
         break;
     }
   });
