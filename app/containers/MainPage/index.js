@@ -21,7 +21,7 @@ import {
 } from 'containers/App/selectors';
 import { loadList } from 'containers/App/actions';
 import reducer from 'containers/App/reducer';
-// import makeSelectMainPage from './selectors';
+import makeSelectMainPage from './selectors';
 import saga from './saga';
 import messages from './messages';
 import StringList from '../../components/StringList';
@@ -66,7 +66,7 @@ MainPage.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  // mainPage: makeSelectMainPage(),
+  mainPage: makeSelectMainPage(),
   list: makeSelectList(),
   error: makeSelectError(),
   loading: makeSelectLoading(),

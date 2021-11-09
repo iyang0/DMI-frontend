@@ -1,14 +1,12 @@
-// import produce from 'immer';
+import produce from 'immer';
 import mainPageReducer from '../reducer';
-// import { someAction } from '../actions';
+import { defaultAction } from '../actions';
 
 /* eslint-disable default-case, no-param-reassign */
 describe('mainPageReducer', () => {
   let state;
   beforeEach(() => {
-    state = {
-      // default state params here
-    };
+    state = {};
   });
 
   it('returns the initial state', () => {
@@ -29,4 +27,9 @@ describe('mainPageReducer', () => {
    *   expect(appReducer(state, someAction())).toEqual(expectedResult);
    * });
    */
+
+  it('should handle the changeUsername action correctly', () => {
+    const expectedResult = produce(state, () => {});
+    expect(mainPageReducer(state, defaultAction())).toEqual(expectedResult);
+  });
 });

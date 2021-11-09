@@ -1,7 +1,21 @@
-// import { selectMainPageDomain } from '../selectors';
+import makeSelectMainPage, { selectMainPageDomain } from '../selectors';
 
 describe('selectMainPageDomain', () => {
-  it('Expect to have unit tests specified', () => {
-    expect(true).toEqual(false);
+  it('should select the main page state', () => {
+    const homeState = {};
+    const mockedState = {
+      home: homeState,
+    };
+    expect(selectMainPageDomain(mockedState)).toEqual(homeState);
+  });
+});
+
+describe('makeSelectUsername', () => {
+  const mainPageSelector = makeSelectMainPage();
+  it('should select the username', () => {
+    const mockedState = {
+      home: {},
+    };
+    expect(mainPageSelector(mockedState)).toEqual();
   });
 });
