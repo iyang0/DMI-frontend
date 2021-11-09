@@ -10,12 +10,12 @@ describe('selectMainPageDomain', () => {
   });
 });
 
-describe('makeSelectUsername', () => {
+describe('makeSelectMainPage', () => {
   const mainPageSelector = makeSelectMainPage();
   it('should select the username', () => {
     const mockedState = {
       home: {},
     };
-    expect(mainPageSelector(mockedState)).toEqual();
+    expect(mainPageSelector(mockedState)).toEqual({});
   });
 });
