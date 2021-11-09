@@ -1,13 +1,13 @@
-import { defaultAction } from '../actions';
-import { DEFAULT_ACTION } from '../constants';
+import { changeString } from '../actions';
+import { CHANGE_STR } from '../constants';
 
 describe('AddPage actions', () => {
   describe('Default Action', () => {
     it('has a type of DEFAULT_ACTION', () => {
       const expected = {
-        type: DEFAULT_ACTION,
+        type: CHANGE_STR,
       };
-      expect(defaultAction()).toEqual(expected);
+      expect(changeString()).toEqual(expected);
     });
   });
 });

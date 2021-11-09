@@ -2,6 +2,17 @@
 
 exports[`<App /> should render and match the snapshot 1`] = `
 <div>
+  <HelmetWrapper
+    defaultTitle="DMI takehome"
+    defer={true}
+    encodeSpecialCharacters={true}
+  >
+    <meta
+      content="Takehome assignment for DMI"
+      name="description"
+    />
+  </HelmetWrapper>
+  <Header />
   <Switch>
     <Route
       component={[Function]}
@@ -10,8 +21,13 @@ exports[`<App /> should render and match the snapshot 1`] = `
     />
     <Route
       component={[Function]}
+      path="/add"
+    />
+    <Route
+      component={[Function]}
     />
   </Switch>
+  <Footer />
   <GlobalStyleComponent />
 </div>
 `;

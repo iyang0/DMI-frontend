@@ -11,12 +11,10 @@ import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-// import { Redirect } from 'react-router';
-// import { useHistory } from 'react-router-dom';
 
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
-// import { loadList } from 'containers/App/actions';
+import { addItem } from 'containers/App/actions';
 import makeSelectAddPage, { makeSelectStr } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
@@ -25,21 +23,12 @@ import Form from './Form';
 import Input from './Input';
 import Button from './Button';
 import { changeString } from './actions';
-import { addItem } from '../App/actions';
 
 const key = 'addPage';
 
-export function AddPage({ str, onChangeString, addItemDispatch }) {
+export function AddPage({ str, onChangeString, onSubmitForm }) {
   useInjectReducer({ key, reducer });
   useInjectSaga({ key, saga });
-  // const history = useHistory();
-
-  const onSubmitForm = evt => {
-    if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-    addItemDispatch(str);
-    // history.push('/');
-    // return <Redirect to="/" />;
-  };
 
   return (
     <div>
@@ -71,7 +60,7 @@ export function AddPage({ str, onChangeString, addItemDispatch }) {
 AddPage.propTypes = {
   str: PropTypes.string,
   onChangeString: PropTypes.func.isRequired,
-  addItemDispatch: PropTypes.func.isRequired,
+  onSubmitForm: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -82,7 +71,10 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     onChangeString: evt => dispatch(changeString(evt.target.value)),
-    addItemDispatch: str => dispatch(addItem(str)),
+    onSubmitForm: evt => {
+      evt.preventDefault();
+      dispatch(addItem());
+    },
   };
 }
 

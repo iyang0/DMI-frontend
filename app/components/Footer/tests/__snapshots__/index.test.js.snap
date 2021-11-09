@@ -6,40 +6,25 @@ exports[`<Footer /> should render and match the snapshot 1`] = `
 >
   <section>
     <span>
-      This project is licensed under the MIT license.
-    </span>
-  </section>
-  <section>
-    <div
-      className="Wrapper-xnjoq9-0 dNmQIR"
-    >
-      <select
-        className="Select-sc-1sm01tk-0 wIjFa"
-        onChange={[Function]}
-        value="en"
+      This project was made by Ivan Yang with the 
+      <a
+        className="A-br8h0y-0 dwVNvo"
+        href="https://github.com/react-boilerplate/react-boilerplate"
       >
-        <option
-          value="en"
-        >
-          en
-        </option>
-        <option
-          value="de"
-        >
-          de
-        </option>
-      </select>
-    </div>
+        React Boilerplate
+      </a>
+      .
+    </span>
   </section>
   <section>
     <span>
       
-      Made with love by 
+      Made for 
       <a
         className="A-br8h0y-0 dwVNvo"
-        href="https://twitter.com/mxstbr"
+        href="https://www.dovenmuehle.com/"
       >
-        Max Stoiber
+        Dovenmuehle
       </a>
       .
     
