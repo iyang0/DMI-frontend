@@ -8,26 +8,56 @@
 
 import React from 'react';
 import { render } from 'react-testing-library';
+import { Provider } from 'react-redux';
 import { IntlProvider } from 'react-intl';
 // import 'jest-dom/extend-expect'; // add some helpful assertions
+import { browserHistory } from 'react-router-dom';
 
-import { MainPage } from '../index';
+import { MainPage, mapDispatchToProps } from '../index';
 import { DEFAULT_LOCALE } from '../../../i18n';
+import configureStore from '../../../configureStore';
+// import { loadList } from '../../App/actions';
 
 describe('<MainPage />', () => {
-  it('Expect to not log errors in console', () => {
-    const spy = jest.spyOn(global.console, 'error');
-    const dispatch = jest.fn();
-    render(
-      <IntlProvider locale={DEFAULT_LOCALE}>
-        <MainPage dispatch={dispatch} />
-      </IntlProvider>,
-    );
-    expect(spy).not.toHaveBeenCalled();
+  let store;
+
+  beforeAll(() => {
+    store = configureStore({}, browserHistory);
   });
 
-  it('Expect to have additional unit tests specified', () => {
-    expect(true).toEqual(false);
+  it('should fetch the list of strings on mount', () => {
+    const loadListSpy = jest.fn();
+    render(
+      <Provider store={store}>
+        <IntlProvider locale="en">
+          <MainPage loadListDispatch={loadListSpy} />
+        </IntlProvider>
+      </Provider>,
+    );
+    expect(loadListSpy).toHaveBeenCalled();
+  });
+
+  describe('mapDispatchToProps', () => {
+    describe('loadListDispatch', () => {
+      it('should be injected', () => {
+        const dispatch = jest.fn();
+        const result = mapDispatchToProps(dispatch);
+        expect(result.loadListDispatch).toBeDefined();
+      });
+
+      it('should dispatch loadList when called', () => {
+        const dispatch = jest.fn();
+        mapDispatchToProps(dispatch);
+        render(
+          <Provider store={store}>
+            <IntlProvider locale={DEFAULT_LOCALE}>
+              <MainPage loadListDispatch={dispatch} />
+            </IntlProvider>
+          </Provider>,
+        );
+        expect(dispatch).toHaveBeenCalledWith();
+      });
+    });
   });
 
   /**
@@ -35,13 +65,21 @@ describe('<MainPage />', () => {
    *
    * @see {@link https://jestjs.io/docs/en/api#testskipname-fn}
    */
-  it.skip('Should render and match the snapshot', () => {
+  it('Should render and match the snapshot', () => {
+    const dispatch = jest.fn();
     const {
       container: { firstChild },
     } = render(
-      <IntlProvider locale={DEFAULT_LOCALE}>
-        <MainPage />
-      </IntlProvider>,
+      <Provider store={store}>
+        <IntlProvider locale={DEFAULT_LOCALE}>
+          <MainPage
+            loading={false}
+            error={false}
+            list={[]}
+            loadListDispatch={dispatch}
+          />
+        </IntlProvider>
+      </Provider>,
     );
     expect(firstChild).toMatchSnapshot();
   });
