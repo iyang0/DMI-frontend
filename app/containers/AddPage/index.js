@@ -11,6 +11,7 @@ import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
+// import { useHistory } from 'react-router-dom';
 
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
@@ -26,9 +27,18 @@ import { changeString } from './actions';
 
 const key = 'addPage';
 
-export function AddPage({ str, onChangeString, onSubmitForm }) {
+export function AddPage({ str, onChangeString, addItemDispatch }) {
   useInjectReducer({ key, reducer });
   useInjectSaga({ key, saga });
+  // useHistory hook requires react-router-dom v5.1.0, boilerplate is on v5.0.0
+  // const history = useHistory();
+
+  const onSubmitForm = evt => {
+    evt.preventDefault();
+    addItemDispatch(str);
+    // ideally would redirect back to main page
+    // history.push('/');
+  };
 
   return (
     <div>
@@ -60,7 +70,7 @@ export function AddPage({ str, onChangeString, onSubmitForm }) {
 AddPage.propTypes = {
   str: PropTypes.string,
   onChangeString: PropTypes.func.isRequired,
-  onSubmitForm: PropTypes.func.isRequired,
+  addItemDispatch: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -71,10 +81,7 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     onChangeString: evt => dispatch(changeString(evt.target.value)),
-    onSubmitForm: evt => {
-      evt.preventDefault();
-      dispatch(addItem());
-    },
+    addItemDispatch: str => dispatch(addItem(str)),
   };
 }
 
