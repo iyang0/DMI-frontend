@@ -19,8 +19,17 @@ describe('<StringList />', () => {
     expect(spy).not.toHaveBeenCalled();
   });
 
-  it('Expect to have additional unit tests specified', () => {
-    expect(true).toEqual(false);
+  it('should render the loading indicator when its loading', () => {
+    const { container } = render(<StringList loading />);
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  it('should not render anything if nothing is provided', () => {
+    const { container } = render(
+      <StringList list={false} error={false} loading={false} />,
+    );
+
+    expect(container.firstChild).toBeNull();
   });
 
   /**
